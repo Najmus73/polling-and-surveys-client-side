@@ -16,6 +16,7 @@ import Button from '@mui/material/Button';
 import { Link, NavLink } from 'react-router-dom';
 import { Container } from '@mui/material';
 import LoginModal from '../../Modals/LoginModal';
+import RegisterModal from '../../Modals/RegisterModal';
 
 const drawerWidth = 240;
 const navItems = [
@@ -31,7 +32,8 @@ const navItems = [
     className={({ isActive, isPending }) =>
       isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>CONTACTUS
   </NavLink>,
-   <LoginModal></LoginModal>
+   <LoginModal></LoginModal>,
+   <RegisterModal></RegisterModal>
   ];
 
 function NavBar(props) {
