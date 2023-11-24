@@ -9,14 +9,11 @@ function FooterSection() {
         <Footer container style={{ backgroundColor: '#612875' }}>
             <div className="w-[1440px] mx-auto">
                 <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-
-                    <div className='flex gap-3 items-center mb-[50px] text-white'>
-                        <div><img src="https://flowbite.com/docs/images/logo.svg" /></div>
-                        <div className='flex gap-1'>
-                            <h1 className='font-bold text-2xl'>SURVEY</h1>
+  
+                        <div className='flex gap-1 text-white mt-[16px]'>
+                            <h1 className='font-bold text-2xl '>SURVEY</h1>
                             <h1 className='font-bold text-2xl rounded-s-full'>.</h1>
-                        </div>
-                    </div>
+                        </div>               
 
                     <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                         <div>

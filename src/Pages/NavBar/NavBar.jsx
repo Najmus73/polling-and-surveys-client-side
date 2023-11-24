@@ -13,11 +13,26 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Container } from '@mui/material';
+import LoginModal from '../../Modals/LoginModal';
 
 const drawerWidth = 240;
-const navItems = [<Link to="/">Home</Link>, <Link to="/">About Us</Link>, <Link to="/">Contact Us</Link>];
+const navItems = [
+  <NavLink to="/"
+    className={({ isActive, isPending }) =>
+      isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>HOME
+  </NavLink>,
+  <NavLink to="/aboutUs"
+    className={({ isActive, isPending }) =>
+      isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>ABOUTUS
+  </NavLink>,
+  <NavLink to="/contactUs"
+    className={({ isActive, isPending }) =>
+      isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>CONTACTUS
+  </NavLink>,
+   <LoginModal></LoginModal>
+  ];
 
 function NavBar(props) {
   const { window } = props;
@@ -52,7 +67,7 @@ function NavBar(props) {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar component="nav" sx={{ backgroundColor: '#612875' }}>
-          <Container maxWidth="xl" sx={{ height: 88}}>
+          <Container maxWidth="xl" sx={{ height: 88 }}>
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -66,7 +81,7 @@ function NavBar(props) {
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
+                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               >
                 <Link to='/'>
                   <div className='flex gap-1 pt-[16px]'>
@@ -75,7 +90,7 @@ function NavBar(props) {
                   </div>
                 </Link>
               </Typography>
-              <Box sx={{ display: { xs: 'none', sm: 'block',paddingTop: 16 } }}>
+              <Box sx={{ display: { xs: 'none', sm: 'block', paddingTop: 16 } }}>
                 {navItems.map((item) => (
                   <Button key={item} sx={{ color: '#fff' }}>
                     {item}
