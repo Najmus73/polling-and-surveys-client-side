@@ -52,7 +52,7 @@ function NavBar(props) {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar component="nav" sx={{ backgroundColor: '#612875' }}>
-          <Container maxWidth="lg">
+          <Container maxWidth="xl" sx={{ height: 88}}>
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -66,11 +66,16 @@ function NavBar(props) {
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
               >
-                <Link to='/'>SURVEY</Link>
+                <Link to='/'>
+                  <div className='flex gap-1 pt-[16px]'>
+                    <h1 className='font-bold text-2xl'>SURVEY</h1>
+                    <h1 className='font-bold text-2xl rounded-s-full'>.</h1>
+                  </div>
+                </Link>
               </Typography>
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Box sx={{ display: { xs: 'none', sm: 'block',paddingTop: 16 } }}>
                 {navItems.map((item) => (
                   <Button key={item} sx={{ color: '#fff' }}>
                     {item}
