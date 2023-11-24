@@ -2,7 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useContext } from "react";
+import swal from 'sweetalert';
+import { FcGoogle } from 'react-icons/fc';
 
 const style = {
     position: 'absolute',
@@ -20,6 +24,36 @@ export default function LoginModal() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const { LogInUser, LogInWithGoogle } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    const handleLoginUser = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        LogInUser(email, password)
+            .then(res => {
+                swal("Good job!", "Successfully Logged In", "success")
+                e.target.reset()
+                navigate('/');
+            })
+            .catch(err => {
+                swal("error", `${err.message}`, "error");
+            })
+    }
+
+    const handleGoogleLogin = () => {
+        LogInWithGoogle()
+            .then(res => {
+                swal("Good job!", "Successfully Logged In", "success")
+                navigate('/');
+            })
+            .catch(err => {
+                swal("error", `${err.message}`, "error");
+            })
+    }
 
     return (
         <div>
@@ -44,7 +78,7 @@ export default function LoginModal() {
                             <p className="mt-1 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                                 Enter your details to Log in.
                             </p>
-                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleLoginUser}>
                                 <div className="mb-4 flex flex-col gap-6">
 
                                     <div className="relative h-11 w-full min-w-[200px]">
@@ -77,7 +111,7 @@ export default function LoginModal() {
 
                                 </div><br />
 
-                                <input className="border px-[172px] py-[7px] rounded-md text-white font-bold" type="submit" value='Login'style={{ backgroundColor: '#612875' }}></input>
+                                <input className="border px-[172px] py-[7px] rounded-md text-white font-bold" type="submit" value='Login' style={{ backgroundColor: '#612875' }}></input>
 
                                 <p className="mt-4 text-center font-sans text-base font-normal leading-relaxed text-gray-700 antialiased flex justify-center">
                                     Create new account ?
@@ -88,10 +122,9 @@ export default function LoginModal() {
 
                                 </p>
                             </form>
-                        </div>
-
-                        
+                        </div>                     
                     </div>
+                    <div onClick={handleGoogleLogin} className="pt-10 flex justify-center text-3xl font-bold"><div className="flex gap-2 items-center"><FcGoogle></FcGoogle><p> <span className="text-blue-500">G</span><span className="text-red-500">o</span><span className="text-yellow-500">o</span><span className="text-blue-500">g</span><span className="text-green-500">l</span><span className="text-red-500">e</span></p></div></div>
                 </Box>
             </Modal>
         </div>

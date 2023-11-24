@@ -2,7 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { useContext } from "react";
+import swal from 'sweetalert';
 
 const style = {
     position: 'absolute',
@@ -21,6 +24,39 @@ export default function RegisterModal() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const { registerUser,logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleRegisterUser = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value
+
+
+        if (password.length < 6) {
+            swal("error", "Password should be at least 6 characters or longer", "error");
+            return;
+        } else if (!/[A-Z]/.test(password)) {
+            swal("error", "Password should have at least one Upper case latter", "error");
+            return;
+        } else if (!/(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/.test(password)) {
+            swal("error", "Password should have at least one special character", "error");
+            return;
+        }
+
+        registerUser(email, password)
+            .then(res => {
+                swal("Good job!", "Successfully registered, Now you can login!", "success")
+                e.target.reset()
+                logOut();
+                navigate('/')
+            })
+            .catch(err => {
+                swal("error", `${err.message}`, "error");
+            })
+
+    }
+
     return (
         <div>
             <Button onClick={handleOpen}><h1 className='text-white font-bold'>Register</h1></Button>
@@ -38,13 +74,13 @@ export default function RegisterModal() {
                             <link rel="canonical" href="http://mysite.com/example" />
                         </Helmet> */}
                         <div className="relative flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none w-[400px] mx-auto">
-                            <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal  antialiased"style={{ color: '#612875' }}>
+                            <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal  antialiased" style={{ color: '#612875' }}>
                                 Sign Up
                             </h4>
                             <p className="mt-1 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                                 Enter your details to register.
                             </p>
-                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleRegisterUser}>
                                 <div className="mb-4 flex flex-col gap-6">
                                     <div className="relative h-11 w-full min-w-[200px]">
                                         <input
@@ -87,7 +123,7 @@ export default function RegisterModal() {
 
                                 </div><br />
 
-                                <input className="border px-[163px] py-[7px] rounded-md text-white font-bold" type="submit" value='Register'style={{ backgroundColor: '#612875' }}></input>
+                                <input className="border px-[163px] py-[7px] rounded-md text-white font-bold" type="submit" value='Register' style={{ backgroundColor: '#612875' }}></input>
 
                                 <p className="mt-4 block text-center font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                                     Already have an account?
