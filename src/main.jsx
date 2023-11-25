@@ -8,6 +8,7 @@ import {
 import Home from './Pages/Home/Home';
 import Route from './Route/Route';
 import AuthProvider from './AuthProvider/AuthProvider';
+import Surveys from './Pages/Surveys/Surveys';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+         path: '/surveys',
+         element: <Surveys></Surveys>
       }
     ]
   },

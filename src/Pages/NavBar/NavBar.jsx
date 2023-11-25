@@ -27,6 +27,10 @@ const navItems = [
     className={({ isActive, isPending }) =>
       isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>HOME
   </NavLink>,
+  <NavLink to="/surveys"
+    className={({ isActive, isPending }) =>
+      isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>SURVEYS
+  </NavLink>,
   <NavLink to="/aboutUs"
     className={({ isActive, isPending }) =>
       isPending ? "pending" : isActive ? "text-white border-b-4 border-white font-bold" : "font-bold text-white"}>ABOUTUS
