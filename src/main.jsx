@@ -20,6 +20,9 @@ import Surveys from './Pages/Surveys/Surveys';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/LoginAndRegPage/Login';
 import Register from './Pages/LoginAndRegPage/Register';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import CreateSurvey from './Pages/CreateSurvey/CreateSurvey';
+import CreatedSurvey from './Pages/CreatedSurvey/CreatedSurvey';
 
 
 
@@ -47,10 +50,17 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    path: 'dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
-
+        {
+          path: 'createSurvey',
+          element: <CreateSurvey></CreateSurvey>
+        },
+        {
+          path: 'createdSurvey',
+          element: <CreatedSurvey></CreatedSurvey>
+        }
     ]
   }
 ]);

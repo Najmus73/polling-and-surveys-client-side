@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useSurveyor = () =>{
+const useCreatedSurveys = () =>{
    const axiosSecure = useAxiosSecure();
-   const {data: surveyor=[]}= useQuery({
-     queryKey: ['surveyor'],
+   const {data: survey=[]}= useQuery({
+     queryKey: ['survey'],
      queryFn: async () =>{
-        const res = await axiosSecure.get('/surveyor')
+        const res = await axiosSecure.get('/survey')
         return res.data;
      }
    })
-   return [surveyor]
+   return [survey]
 }
-export default useSurveyor;
+export default useCreatedSurveys;
