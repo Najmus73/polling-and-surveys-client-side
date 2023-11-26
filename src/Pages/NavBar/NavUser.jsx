@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import swal from 'sweetalert';
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { NavLink } from "react-router-dom";
+import useSurveyor from "../Hooks/useSurveyor";
 
 
 const NavUser = () => {
     const { user, logOut } = useContext(AuthContext);
-
+    const [surveyor] = useSurveyor();
+    // const surveyorUser = surveyor.find(user=>user.email === user.email)
+    // console.log(surveyorUser);
     const handleSignOut = () => {
         logOut()
             .then(() => {
@@ -23,6 +26,10 @@ const NavUser = () => {
             {
                 user ? <>
                     <div className="flex items-center gap-5">
+                        <div>
+                            <NavLink to='/dashboard'><h1 className="font-bold">Dashboard</h1></NavLink>
+                        </div>
+
                         <div>
                             <span className="text-white font-bold uppercase">{
 
