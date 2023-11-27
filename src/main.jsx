@@ -55,11 +55,11 @@ const router = createBrowserRouter([
     children: [
         {
           path: 'createSurvey',
-          element: <CreateSurvey></CreateSurvey>
+          element: <PrivateRoute><CreateSurvey></CreateSurvey></PrivateRoute>
         },
         {
           path: 'createdSurvey',
-          element: <CreatedSurvey></CreatedSurvey>
+          element: <PrivateRoute><CreatedSurvey></CreatedSurvey></PrivateRoute>
         }
     ]
   }

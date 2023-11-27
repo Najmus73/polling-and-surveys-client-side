@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const NavLogReg = () => {
     const { user } = useContext(AuthContext);
-
+    
     return (
         <div>
             {

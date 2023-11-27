@@ -6,12 +6,15 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import useSurveyor from '../Hooks/useSurveyor';
 import { IoIosCreate } from "react-icons/io";
 import { FcSurvey } from "react-icons/fc";
+import useUsers from '../Hooks/useUsers';
 
 const Dashboard = () => {
-    const isAdmin = false;
     const { user } = useContext(AuthContext);
     const [surveyor]= useSurveyor();
+    const [users]= useUsers();
     const surveyorFind = surveyor.find(surveyorUser=>surveyorUser.email === user.email)
+    const usersFind = users.find(user=>user.email === user.email)
+  
     return (
         <div className="flex">
             <div className="w-64 min-h-screen " style={{backgroundColor: '#612875'}}>
@@ -23,10 +26,14 @@ const Dashboard = () => {
                         <li><NavLink to="/dashboard/createdSurvey"><div className='flex items-center gap-1'><FcSurvey className='text-lg'/><h1 className='font-bold'>Your Surveys</h1></div></NavLink></li>
                     </>
                     :
+                    usersFind ?
                     <>
                       <li><NavLink to="/dashboard/userHome">User Home</NavLink></li>
                       <li><NavLink to="/dashboard/bid">My Bids</NavLink></li>
                       <li><NavLink to="/dashboard/reservation">Reservation</NavLink></li>
+                    </>
+                    :
+                    <>
                     </>
                     /* {
                         isAdmin ? <>
