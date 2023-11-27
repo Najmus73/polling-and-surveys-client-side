@@ -6,7 +6,7 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-
 
 function FooterSection() {
     return (
-        <Footer container style={{ backgroundColor: '#612875' }}>
+        <Footer container style={{ backgroundColor: '#4D1E72' }}>
             <div className="w-[1440px] mx-auto">
                 <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
   

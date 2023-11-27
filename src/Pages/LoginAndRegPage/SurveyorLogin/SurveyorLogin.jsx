@@ -95,7 +95,7 @@ const SurveyorLogin = () => {
                     <p className="mt-4 text-center font-sans text-base font-normal leading-relaxed text-gray-700 antialiased flex justify-center">
                         Create new account ?
 
-                        <Link>
+                        <Link to='/register'>
                             <p className="font-medium text-pink-900 transition-colors hover:text-pink-700">Register</p>
                         </Link>
 

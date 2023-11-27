@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
+import { FcGoogle } from 'react-icons/fc';
 
 const NormalUser = () => {
-    const { registerUser, logOut } = useContext(AuthContext);
+    const { registerUser, logOut, LogInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -33,21 +34,40 @@ const NormalUser = () => {
                     name,
                     email,
                     password,
-               }
-               axios.post('http://localhost:5000/users', users)
-               .then(res => {
-                   if (res.data.insertedId) {
-                       swal("Good job!", "Successfully registered, Now you can login!", "success")
-                       e.target.reset()
-                       logOut();
-                       navigate('/login')
-                   }
-               })
+                }
+                axios.post('http://localhost:5000/users', users)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            swal("Good job!", "Successfully registered, Now you can login!", "success")
+                            e.target.reset()
+                            logOut();
+                            navigate('/login')
+                        }
+                    })
             })
             .catch(err => {
                 swal("error", `${err.message}`, "error");
             })
 
+    }
+
+    const handleGoogleLogin = () => {
+        LogInWithGoogle()
+            .then(res => {
+                const users = {
+                    name: res.user?.displayName,
+                    email: res.user?.email
+                }
+                axios.post('http://localhost:5000/users', users)
+                    .then(res => {
+                        swal("Good job!", "Successfully registered, Now you can login!", "success")
+                        logOut();
+                        navigate('/login')
+                    })
+            })
+            .catch(err => {
+                swal("error", `${err.message}`, "error");
+            })
     }
 
     return (
@@ -120,6 +140,7 @@ const NormalUser = () => {
                     </p>
                 </form>
             </div>
+            <div onClick={handleGoogleLogin} className="pt-10 flex justify-center text-3xl font-bold"><div className="flex gap-2 items-center"><FcGoogle></FcGoogle><p> <span className="text-blue-500">G</span><span className="text-red-500">o</span><span className="text-yellow-500">o</span><span className="text-blue-500">g</span><span className="text-green-500">l</span><span className="text-red-500">e</span></p></div></div>
         </div>
     )
 }
