@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import FAQ from "./FAQ";
 import SearchBox from "./SearchBox";
 import SurveySection from "./SurveySection";
 import TestimonialSlider from "./TestimonialSlider";
@@ -10,7 +11,8 @@ const Home = () =>{
             <Banner></Banner>
             <SearchBox></SearchBox>
             <SurveySection></SurveySection>
-            <TestimonialSlider></TestimonialSlider>         
+            <TestimonialSlider></TestimonialSlider>
+            <FAQ></FAQ>         
         </div>
     )
 }

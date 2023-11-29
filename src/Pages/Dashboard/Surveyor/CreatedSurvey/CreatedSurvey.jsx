@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import useCreatedSurveys from "../Hooks/useCreatedSurveys";
+
 import CreatedSurveyCard from "./CreatedSurveyCard";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import useCreatedSurveys from "../../../Hooks/useCreatedSurveys";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
+
 
 const CreatedSurvey = () => {
     const [survey] = useCreatedSurveys()

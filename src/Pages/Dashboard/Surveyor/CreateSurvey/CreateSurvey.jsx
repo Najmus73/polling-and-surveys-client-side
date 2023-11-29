@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 // import { Helmet } from "react-helmet";
 
 const CreateSurvey = () => {

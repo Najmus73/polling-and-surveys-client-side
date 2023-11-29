@@ -21,8 +21,14 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/LoginAndRegPage/Login';
 import Register from './Pages/LoginAndRegPage/Register';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
-import CreateSurvey from './Pages/CreateSurvey/CreateSurvey';
-import CreatedSurvey from './Pages/CreatedSurvey/CreatedSurvey';
+import ManageUsers from './Pages/Dashboard/DashboardAdmin/ManageUsers';
+import AdminHome from './Pages/Dashboard/DashboardAdmin/AdminHome';
+import ManageSurvey from './Pages/Dashboard/DashboardAdmin/ManageSurvey';
+import PaymentUsers from './Pages/Dashboard/DashboardAdmin/PaymentUsers';
+import CreateSurvey from './Pages/Dashboard/Surveyor/CreateSurvey/CreateSurvey';
+import CreatedSurvey from './Pages/Dashboard/Surveyor/CreatedSurvey/CreatedSurvey';
+import ProUser from './Pages/NavBar/ProUser';
+import SurveyDetails from './Pages/Surveys/SurveyDetails';
 
 
 
@@ -37,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/surveys',
-        element: <Surveys></Surveys>
+        element: <PrivateRoute><Surveys></Surveys></PrivateRoute>
+      },
+      {
+          path: '/surveyDetail/:_id',
+          element: <SurveyDetails></SurveyDetails>
       },
       {
         path: '/login',
@@ -46,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/proUser',
+        element: <PrivateRoute><ProUser></ProUser></PrivateRoute>
       }
     ]
   },
@@ -60,6 +74,22 @@ const router = createBrowserRouter([
         {
           path: 'createdSurvey',
           element: <PrivateRoute><CreatedSurvey></CreatedSurvey></PrivateRoute>
+        },
+        {
+          path: 'manageUsers',
+          element: <ManageUsers></ManageUsers>
+        },
+        {
+          path: 'adminHome',
+          element:<AdminHome></AdminHome>
+        },
+        {
+          path: 'manageSurvey',
+          element: <ManageSurvey></ManageSurvey>
+        },
+        {
+          path: 'paymentUsers',
+          element: <PaymentUsers></PaymentUsers>
         }
     ]
   }
