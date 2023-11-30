@@ -86,14 +86,14 @@ const CheckoutForm = () => {
       name: findUser.name,
       email: findUser.email,
     }
-    axios.post('http://localhost:5000/proUser', proUserInfo)
+    axios.post('https://polling-and-survey-app-server.vercel.app/proUser', proUserInfo)
       .then(res => {
         if (res.data.insertedId) {
           swal("Good job!", "Successfully Payed The Money !!!", "success")
         }
       })
 
-    fetch(`http://localhost:5000/users/${findUser._id}`, {
+    fetch(`https://polling-and-survey-app-server.vercel.app/users/${findUser._id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

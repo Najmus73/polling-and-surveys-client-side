@@ -1,3 +1,4 @@
+import '../styles/Styles.css'
 const SearchBox = () => {
     return (
         <div className="pb-[100px]" id='search'>

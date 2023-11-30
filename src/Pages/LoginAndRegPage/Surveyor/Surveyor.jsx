@@ -35,7 +35,7 @@ const Surveyor = () => {
                     email,
                     password,
                 }
-                axios.post('http://localhost:5000/surveyor', surveyorInfo)
+                axios.post('https://polling-and-survey-app-server.vercel.app/surveyor', surveyorInfo)
                     .then(res => {
                         if (res.data.insertedId) {
                             swal("Good job!", "Successfully registered, Now you can login!", "success")
@@ -58,7 +58,7 @@ const Surveyor = () => {
                     name: res.user?.displayName,
                     email: res.user?.email
                 }
-                axios.post('http://localhost:5000/surveyor', surveyorInfo)
+                axios.post('https://polling-and-survey-app-server.vercel.app/surveyor', surveyorInfo)
                     .then(res => {
                         swal("Good job!", "Successfully registered, Now you can login!", "success")
                         logOut();

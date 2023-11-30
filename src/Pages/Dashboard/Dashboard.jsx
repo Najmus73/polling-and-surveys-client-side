@@ -47,9 +47,6 @@ const Dashboard = () => {
                                     usersFind ?
                                         <>
 
-                                            <li><NavLink to="/dashboard/userHome">User Home</NavLink></li>
-                                            <li><NavLink to="/dashboard/bid">My Bids</NavLink></li>
-                                            <li><NavLink to="/dashboard/reservation">Reservation</NavLink></li>
                                         </>
                                         :
                                         <></>

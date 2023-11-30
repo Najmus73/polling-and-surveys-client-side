@@ -17,13 +17,13 @@ const ManageUsers = () => {
                     name: surveyorUser.name,
                     email: surveyorUser.email
                }
-               axios.post('http://localhost:5000/admin', users)
+               axios.post('https://polling-and-survey-app-server.vercel.app/admin', users)
                .then(res => {               
                        swal("Good job!", "Successfully Changed Role", "success") 
                        window.location.reload(true)                                  
                })  
 
-               fetch(`http://localhost:5000/surveyor/${surveyorUser._id}`,{
+               fetch(`https://polling-and-survey-app-server.vercel.app/surveyor/${surveyorUser._id}`,{
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -37,13 +37,13 @@ const ManageUsers = () => {
                     name: user.name,
                     email: user.email
                }
-               axios.post('http://localhost:5000/admin', users)
+               axios.post('https://polling-and-survey-app-server.vercel.app/admin', users)
                .then(res => {               
                        swal("Good job!", "Successfully Changed Role", "success") 
                        window.location.reload(true)                                  
                })  
 
-               fetch(`http://localhost:5000/users/${user._id}`,{
+               fetch(`https://polling-and-survey-app-server.vercel.app/users/${user._id}`,{
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -57,13 +57,13 @@ const ManageUsers = () => {
                     name: proUserID.name,
                     email: proUserID.email
                }
-               axios.post('http://localhost:5000/admin', users)
+               axios.post('https://polling-and-survey-app-server.vercel.app/admin', users)
                .then(res => {               
                        swal("Good job!", "Successfully Changed Role", "success") 
                        window.location.reload(true)                                  
                })  
 
-               fetch(`http://localhost:5000/proUser/${proUserID._id}`,{
+               fetch(`https://polling-and-survey-app-server.vercel.app/proUser/${proUserID._id}`,{
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -29,6 +29,11 @@ import CreateSurvey from './Pages/Dashboard/Surveyor/CreateSurvey/CreateSurvey';
 import CreatedSurvey from './Pages/Dashboard/Surveyor/CreatedSurvey/CreatedSurvey';
 import ProUser from './Pages/NavBar/ProUser';
 import SurveyDetails from './Pages/Surveys/SurveyDetails';
+import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import ProUserDash from './Pages/Dashboard/DashboardPro/proUserDash';
+import AboutUs from './Pages/AboutUs/AboutUs';
+import ContactUs from './Pages/ContactUs/ContactUs';
+
 
 
 
@@ -36,6 +41,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Route></Route>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -47,7 +53,8 @@ const router = createBrowserRouter([
       },
       {
           path: '/surveyDetail/:_id',
-          element: <SurveyDetails></SurveyDetails>
+          element: <PrivateRoute><SurveyDetails></SurveyDetails></PrivateRoute>,
+          loader: () => fetch('https://polling-and-survey-app-server.vercel.app/survey')
       },
       {
         path: '/login',
@@ -60,6 +67,14 @@ const router = createBrowserRouter([
       {
         path: '/proUser',
         element: <PrivateRoute><ProUser></ProUser></PrivateRoute>
+      },
+      {
+        path: '/aboutUs',
+        element: <AboutUs></AboutUs>
+      },
+      {
+        path: '/contactUs',
+        element: <ContactUs></ContactUs>
       }
     ]
   },
@@ -90,6 +105,10 @@ const router = createBrowserRouter([
         {
           path: 'paymentUsers',
           element: <PaymentUsers></PaymentUsers>
+        },
+        {
+          path:'proUser',
+          element: <ProUserDash></ProUserDash>
         }
     ]
   }

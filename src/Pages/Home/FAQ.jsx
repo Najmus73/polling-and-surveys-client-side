@@ -9,7 +9,7 @@ export default function FAQ() {
         AOS.init({ duration: 2000 });
     }, [])
     return (
-        <div className="w-[700px] flex mx-auto pb-[100px]">
+        <div className="lg:w-[700px] lg:flex mx-auto pb-[100px]">
             <div data-aos="fade-right" className='flex justify-center items-center'><h1 className='font-bold text-2xl text-purple-950'>FAQ_</h1></div>
             <div data-aos="fade-left" className="mx-auto w-full max-w-md rounded-2xl bg-white p-2">
                 <Disclosure>

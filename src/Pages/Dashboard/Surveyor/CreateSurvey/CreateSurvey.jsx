@@ -16,11 +16,14 @@ const CreateSurvey = () => {
         const surveyTitle = form.surveyTitle.value;
         const category = form.category.value;
         const description = form.description.value;
+        const Question1 = form.Question1.value;
+        const Question2 = form.Question2.value;
+        const Question3 = form.Question3.value;
        
-        const NewSurvey = { image, surveyTitle, category, description, email }
+        const NewSurvey = { image, surveyTitle, category, description, email ,Question1 , Question2, Question3 }
         console.log(NewSurvey);
 
-        axios.post('http://localhost:5000/survey', NewSurvey)
+        axios.post('https://polling-and-survey-app-server.vercel.app/survey', NewSurvey)
         .then(res => {
             if (res.data.insertedId) {
                 Swal.fire({
@@ -51,7 +54,7 @@ const CreateSurvey = () => {
                         </div>
                         <div className="flex flex-col">
                             <label>Survey Title</label>
-                            <input className="border border-purple-950 py-[5px] pr-[460px]" type="text" name="surveyTitle" placeholder="Enter Job Title" required />
+                            <input className="border border-purple-950 py-[5px] pr-[460px]" type="text" name="surveyTitle" placeholder="Enter Survey Title" required />
                         </div>
                     </div>
                     <div className="flex justify-between pb-[10px]">
@@ -75,9 +78,21 @@ const CreateSurvey = () => {
                             <label>Description</label>
                             <input className="border border-purple-950 py-[5px] pr-[460px]" type="text" name="description" placeholder="Enter Job Description" required />
                         </div>
-                        
+                        <div className="flex flex-col">
+                            <label>Survey Question 1</label>
+                            <input className="border border-purple-950 py-[5px] pr-[460px]" type="text" name="Question1" placeholder="Enter Your Survey Question 1" required />
+                        </div>                  
                     </div>
-
+                    <div className="flex justify-between pb-[10px]">
+                        <div className="flex flex-col">
+                            <label>Survey Question 2</label>
+                            <input className="border border-purple-950 py-[5px] pr-[460px]" type="text" name="Question2" placeholder="Enter Your Survey Question 2" required />
+                        </div>
+                        <div className="flex flex-col">
+                            <label>Survey Question 3</label>
+                            <input className="border border-purple-950 py-[5px] pr-[460px]" type="text" name="Question3" placeholder="Enter Your Survey Question 3" required />
+                        </div>                  
+                    </div>
 
                     <div className="pt-[30px]">
                         <input type="submit" value="Create Survey" className="py-[6px] rounded-lg w-full bg-purple-950 font-bold text-white" />

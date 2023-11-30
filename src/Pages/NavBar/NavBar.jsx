@@ -52,7 +52,7 @@ function NavBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center',backgroundColor: '#4D1E72' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>
@@ -72,10 +72,10 @@ function NavBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <div>
-      <Box sx={{ display: 'flex' }}>
+    <div >
+      <Box sx={{ display: 'flex', overflow: 'hidden' }}>
         <CssBaseline />
-        <AppBar component="nav" sx={{ backgroundColor: '#4D1E72' }}>
+        <AppBar component="nav" sx={{ backgroundColor: '#4D1E72',overflow: 'hidden' }}>
           <Container maxWidth="xl" sx={{ height: 88 }}>
             <Toolbar>
               <IconButton

@@ -32,7 +32,7 @@ const NormalUserLogin = () => {
                     name: res.user?.displayName,
                     email: res.user?.email  
                }
-               axios.post('http://localhost:5000/users', users)
+               axios.post('https://polling-and-survey-app-server.vercel.app/users', users)
                .then(res => {               
                        swal("Good job!", "Successfully Logged In", "success")                 
                        navigate('/')       
