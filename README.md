@@ -1,8 +1,11 @@
-# React + Vite
+# Live link of this site - https://polling-and-survey-auth.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+5 feature of this site- 
 
-Currently, two official plugins are available:
+# 1. User and Surveyor can create account and can log in.
+# 2. User can be a pro user with stipe payment.
+# 3. Surveyor can create survey with questions.
+# 4. Just User and Pro use can participate on survey
+# 5. Admin can change role of everyone etc.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
